@@ -65,6 +65,9 @@ app.use('/api/v1/jobs',                       require('./routes/job.routes'));
 app.use('/api/v1/applications',               require('./routes/application.routes'));
 app.use('/api/v1/companies',                  require('./routes/company.routes'));
 app.use('/api/v1/notifications',              require('./routes/notification.routes'));
+app.use('/api/v1/admin',                      require('./routes/admin.routes'));
+app.use('/api/v1/admin',                      require('./routes/admin.routes'));
+app.use('/api/v1/admin',                      require('./routes/admin.routes'));
 
 // PRD v2 §5.4 — GET /api/v1/health (Public)
 app.get('/api/v1/health', (req, res) =>
