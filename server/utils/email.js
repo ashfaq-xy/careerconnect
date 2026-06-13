@@ -8,16 +8,11 @@ exports.sendEmail = async ({ to, subject, html, text }) => {
       pass: process.env.EMAIL_PASS,
     },
   });
-
-  const mailOptions = {
+  const info = await transporter.sendMail({
     from: `"CareerConnect" <${process.env.EMAIL_USER}>`,
-    to,
-    subject,
-    html,
+    to, subject, html,
     text: text || html?.replace(/<[^>]+>/g, ''),
-  };
-
-  const info = await transporter.sendMail(mailOptions);
+  });
   console.log(`📧 Email sent to ${to}: ${info.messageId}`);
   return info;
 };
