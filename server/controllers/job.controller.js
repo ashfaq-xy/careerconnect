@@ -83,7 +83,7 @@ exports.toggleStatus = async (req, res, next) => {
   try {
     const job = await Job.findById(req.params.id);
     if (!job) return res.status(404).json({ success: false, message: 'Job not found.' });
-    if (job.postedBy.toString() !== req.user._id.toString())
+    if (job.postedBy.toString() !== req.user._id.toString() && req.user.role !== 'admin')
       return res.status(403).json({ success: false, message: 'Forbidden.' });
     job.status = job.status === 'open' ? 'closed' : 'open';
     await job.save();
